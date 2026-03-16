@@ -36,7 +36,6 @@ export class BatchEntity {
 
   @Column({
     type: 'int',
-    length: 20,
     nullable: false,
   })
   initialAmount: number;
@@ -56,7 +55,7 @@ export class BatchEntity {
   departureDate: Date;
 
   @Column({
-    type: 'text',
+    type: 'varchar',
     length: 500,
     nullable: false,
   })
