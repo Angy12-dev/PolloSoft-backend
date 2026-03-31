@@ -11,6 +11,7 @@ import { inventoryModule } from './inventory/inventory.module';
 import { batchModule } from './batch/batch.module';
 import { profitabilityModule } from './profitability/profitability.module';
 import { costProductionModule } from './costsProduction/costsProduction.module';
+import { seedModule } from './seed/seed.module';
 
 @Module({
     imports: [
@@ -29,6 +30,7 @@ import { costProductionModule } from './costsProduction/costsProduction.module';
         batchModule,
         profitabilityModule,
         costProductionModule,
+        seedModule,
     ],
     controllers: [AppController],
     providers: [AppService],
