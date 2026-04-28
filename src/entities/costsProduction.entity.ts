@@ -13,47 +13,47 @@ export class CostsProductionEntity {
     // aqui iran las columnas de la tabla costs_production\
 
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id!: string;
 
     @Column({
         type: 'date',
         name: 'cost_date',
         nullable: false,
     })
-    costDate: Date;
+    costDate!: Date;
 
     @Column({
         type: 'varchar',
         length: 500,
         nullable: false,
     })
-    description: string;
+    description!: string;
 
     @Column({
         type: 'varchar',
         length: 100,
         nullable: false,
     })
-    costType: string;
+    costType!: string;
 
     @Column({
         type: 'varchar',
         length: 40,
         nullable: false,
     })
-    unit: string;
+    unit!: string;
 
     @Column({
         type: 'decimal',
         nullable: false,
     })
-    worth: number;
+    worth!: number;
 
     @ManyToOne(() => UsersEntity, (users) => users.costProduction)
     @JoinColumn()
-    users: UsersEntity;
+    users!: UsersEntity;
 
     @ManyToOne(() => BatchEntity, (batch) => batch.costProduction)
     @JoinColumn()
-    batch: BatchEntity;
+    batch!: BatchEntity;
 }

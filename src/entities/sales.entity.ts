@@ -13,44 +13,44 @@ export class SalesEntity {
     // aqui iran las columnas de la tabla ventas
 
     @PrimaryGeneratedColumn('uuid')
-    uuid: string;
+    uuid!: string;
 
     @Column({
         type: 'date',
         name: 'sale_date',
         nullable: false,
     })
-    saledate: Date;
+    saledate!: Date;
 
     @Column({
         type: 'int',
         nullable: false,
     })
-    amount: number;
+    amount!: number;
 
     @Column({
         type: 'decimal',
         nullable: false,
     })
-    weight: number;
+    weight!: number;
 
     @Column({
         type: 'decimal',
         nullable: false,
     })
-    unitValue: number;
+    unitValue!: number;
 
     @Column({
         type: 'decimal',
         nullable: false,
     })
-    totalValue: number;
+    totalValue!: number;
 
     @ManyToOne(() => UsersEntity, (users) => users.sales)
     @JoinColumn()
-    users: UsersEntity;
+    users!: UsersEntity;
 
     @ManyToOne(() => BatchEntity, (batch) => batch.sales)
     @JoinColumn()
-    batch: BatchEntity;
+    batch!: BatchEntity;
 }

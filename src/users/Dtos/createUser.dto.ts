@@ -19,7 +19,7 @@ export class createUserDto {
     @MaxLength(50, {
         message: 'El nombre no puede tener más de 50 caracteres',
     })
-    fullName: string;
+    fullName!: string;
 
     @IsEmail(
         {},
@@ -28,7 +28,7 @@ export class createUserDto {
                 'El email debe tener un formato de correo electrónico válido',
         },
     )
-    email: string;
+    email!: string;
 
     @IsNotEmpty({ message: 'La contraseña es requerida' })
     @IsString({ message: 'La contraseña debe ser una cadena de caracteres' })
@@ -39,5 +39,5 @@ export class createUserDto {
                 'La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial',
         },
     )
-    password: string;
+    password!: string;
 }

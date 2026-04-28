@@ -8,6 +8,7 @@ import { SalesEntity } from 'src/entities/sales.entity';
 import { UsersEntity } from 'src/entities/users.entity';
 import { RolesEnum } from 'src/enum/roles.enum';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class seedRepository {
@@ -38,12 +39,12 @@ export class seedRepository {
                 'La base de datos ya contiene usuarios',
             );
         }
-
+        const hashedPassword = await bcrypt.hash('Angy1012', 10);
         await this.usersDataBase.save([
             {
                 fullName: 'Angy Ariza',
                 email: 'angyzpao@gmail.com',
-                password: 'Angy1012',
+                password: hashedPassword,
                 roles: RolesEnum.ADMIN,
             },
         ]);

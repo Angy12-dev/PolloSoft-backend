@@ -7,5 +7,5 @@ export class updateUserDto extends PartialType(createUserDto) {
     @IsUUID('4', {
         message: 'El id del usuario debe tener un formato UUID válido',
     })
-    uuid: string;
+    uuid!: string;
 }

@@ -12,6 +12,7 @@ import { batchModule } from './batch/batch.module';
 import { profitabilityModule } from './profitability/profitability.module';
 import { costProductionModule } from './costsProduction/costsProduction.module';
 import { seedModule } from './seed/seed.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
     imports: [
@@ -31,6 +32,7 @@ import { seedModule } from './seed/seed.module';
         profitabilityModule,
         costProductionModule,
         seedModule,
+        AuthModule,
     ],
     controllers: [AppController],
     providers: [AppService],

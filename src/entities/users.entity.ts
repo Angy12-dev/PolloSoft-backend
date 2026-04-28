@@ -11,60 +11,60 @@ export class UsersEntity {
     // aqui iran las columnas de la tabla users
 
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id!: string;
 
     @Column({
         type: 'varchar',
         length: 100,
         nullable: false,
     })
-    fullName: string;
+    fullName!: string;
 
     @Column({
         type: 'varchar',
         length: 100,
         nullable: false,
     })
-    email: string;
+    email!: string;
 
     @Column({
         type: 'varchar',
         length: 100,
         nullable: false,
     })
-    password: string;
+    password!: string;
 
     @Column({
         type: 'enum',
         enum: RolesEnum,
         default: RolesEnum.ADMIN,
     })
-    roles: RolesEnum;
+    roles!: RolesEnum;
 
     @Column({
         type: 'boolean',
         default: true,
     })
-    isActive: boolean;
+    isActive!: boolean;
 
     @OneToMany(() => SalesEntity, (sales) => sales.users)
-    sales: SalesEntity[];
+    sales!: SalesEntity[];
 
     @OneToMany(() => InventoryEntity, (inventory) => inventory.users)
-    inventory: InventoryEntity;
+    inventory!: InventoryEntity;
 
     @OneToMany(() => BatchEntity, (batch) => batch.users)
-    batch: BatchEntity;
+    batch!: BatchEntity;
 
     @OneToMany(
         () => ProfitabilityEntity,
         (profitabilite) => profitabilite.users,
     )
-    profitabilite: ProfitabilityEntity;
+    profitabilite!: ProfitabilityEntity;
 
     @OneToMany(
         () => CostsProductionEntity,
         (costProduction) => costProduction.users,
     )
-    costProduction: CostsProductionEntity;
+    costProduction!: CostsProductionEntity;
 }
