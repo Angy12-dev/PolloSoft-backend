@@ -30,18 +30,25 @@ export class SalesEntity {
 
     @Column({
         type: 'decimal',
+        precision: 10,
+        scale: 2,
+        name: 'weight',
         nullable: false,
     })
-    weight!: number;
+    weightKg!: number;
 
     @Column({
         type: 'decimal',
+        precision: 10,
+        scale: 2,
         nullable: false,
     })
     unitValue!: number;
 
     @Column({
         type: 'decimal',
+        precision: 10,
+        scale: 2,
         nullable: false,
     })
     totalValue!: number;
