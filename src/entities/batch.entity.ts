@@ -63,7 +63,7 @@ export class BatchEntity {
 
     @ManyToOne(() => UsersEntity, (users) => users.batch)
     @JoinColumn()
-    users!: BatchEntity;
+    users!: UsersEntity;
 
     @OneToMany(() => SalesEntity, (sales) => sales.batch)
     sales!: SalesEntity;
