@@ -50,4 +50,64 @@ export class seedRepository {
         ]);
         return { message: 'usuario creado con exito' };
     }
+
+    async getSeedSalesRepository() {
+        const contador = await this.salesDataBase.count();
+        if (contador !== 0) {
+            throw new ConflictException(
+                'La base de datos ya contiene ventas registradas',
+            );
+        }
+
+        const user = await this.usersDataBase.findOne({ where: {} });
+        const batch = await this.batchDataBase.findOne({ where: {} });
+
+        if (!user || !batch) {
+            throw new ConflictException('No hay usuarios o lotes registrados');
+        }
+
+        await this.salesDataBase.save([
+            {
+                saledate: new Date('2026-02-10'),
+                amount: 3,
+                weightKg: 7.5,
+                unitValue: 13.0,
+                totalValue: 97.5,
+                users: user,
+                batch: batch,
+            },
+        ]);
+        return { message: 'Venta creada con exito' };
+    }
+
+    async getSeedBatchRepository() {
+        const contador = await this.batchDataBase.count();
+        if (contador !== 0) {
+            throw new ConflictException(
+                'La base de datos ya contiene lotes registrados',
+            );
+        }
+
+        const user = await this.usersDataBase.findOne({ where: {} });
+
+        if (!user) {
+            throw new ConflictException(
+                'No hay usuarios registrados, ejecuta el seed de usuarios primero',
+            );
+        }
+
+        await this.batchDataBase.save([
+            {
+                lotNumber: 'LOTE-001',
+                entryDate: new Date('2026-01-10'),
+                initialAmount: 500,
+                supplier: 'Proveedor Principal',
+                departureDate: new Date('2026-03-10'),
+                description: 'Primer lote de pollos de engorde',
+                users: user,
+            },
+        ]);
+
+        return { message: 'Lote creado con exito' };
+    }
 }

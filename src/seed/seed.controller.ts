@@ -11,4 +11,14 @@ export class seedController {
         // Nombre del metodo
         return this.seedService.getSeedUsersService();
     }
+
+    @Get('seedSales')
+    getSeedSales() {
+        return this.seedService.getSeedSalesService();
+    }
+
+    @Get('seedBatch')
+    getSeedBatch() {
+        return this.seedService.getSeedBatchService();
+    }
 }

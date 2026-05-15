@@ -8,4 +8,12 @@ export class seedService {
     getSeedUsersService() {
         return this.seedRepository.getSeedUsersRepository();
     }
+
+    getSeedSalesService() {
+        return this.seedRepository.getSeedSalesRepository();
+    }
+
+    getSeedBatchService() {
+        return this.seedRepository.getSeedBatchRepository();
+    }
 }
