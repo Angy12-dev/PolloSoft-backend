@@ -16,4 +16,8 @@ export class seedService {
     getSeedBatchService() {
         return this.seedRepository.getSeedBatchRepository();
     }
+
+    getSeedInventoryService() {
+        return this.seedRepository.getSeedInventoryRepository;
+    }
 }

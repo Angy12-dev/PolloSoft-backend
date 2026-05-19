@@ -9,6 +9,7 @@ import { UsersEntity } from 'src/entities/users.entity';
 import { RolesEnum } from 'src/enum/roles.enum';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { StateEnum } from 'src/enum/state.enum';
 
 @Injectable()
 export class seedRepository {
@@ -109,5 +110,32 @@ export class seedRepository {
         ]);
 
         return { message: 'Lote creado con exito' };
+    }
+
+    async getSeedInventoryRepository() {
+        const contador = await this.inventoryDataBase.count();
+        if (contador !== 0) {
+            throw new ConflictException(
+                'La base de datos ya contiene inventario registrados',
+            );
+        }
+        const user = await this.usersDataBase.findOne({ where: {} });
+        const batch = await this.batchDataBase.findOne({ where: {} });
+
+        if (!user || !batch) {
+            throw new ConflictException('No hay usuarios o lotes registrados');
+        }
+        await this.inventoryDataBase.save([
+            {
+                registrationDate: new Date(),
+                product: 'Concentrado de engorde',
+                amount: 5,
+                unit: 'Bultos',
+                state: StateEnum.IN_STOCK,
+                users: user,
+                batch: batch,
+            },
+        ]);
+        return { message: 'Inventario creado con exito' };
     }
 }

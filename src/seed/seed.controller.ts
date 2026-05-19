@@ -21,4 +21,9 @@ export class seedController {
     getSeedBatch() {
         return this.seedService.getSeedBatchService();
     }
+
+    @Get('seedInventory')
+    getSeedInventory() {
+        return this.seedService.getSeedInventoryService();
+    }
 }
