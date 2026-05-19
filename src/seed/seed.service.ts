@@ -20,4 +20,12 @@ export class seedService {
     getSeedInventoryService() {
         return this.seedRepository.getSeedInventoryRepository();
     }
+
+    getSeedCostProductionService() {
+        return this.seedRepository.getSeedCostProductionRepository();
+    }
+
+    getSeedProfitabilityService() {
+        return this.seedRepository.getSeedProfitabilityRepository();
+    }
 }

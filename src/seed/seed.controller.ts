@@ -26,4 +26,14 @@ export class seedController {
     getSeedInventory() {
         return this.seedService.getSeedInventoryService();
     }
+
+    @Get('seedCostProduction')
+    getSeedCostProduction() {
+        return this.seedService.getSeedCostProductionService();
+    }
+
+    @Get('seedProfitability')
+    getSeedProfitability() {
+        return this.seedService.getSeedProfitabilityService();
+    }
 }
