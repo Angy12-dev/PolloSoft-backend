@@ -18,6 +18,6 @@ export class seedService {
     }
 
     getSeedInventoryService() {
-        return this.seedRepository.getSeedInventoryRepository;
+        return this.seedRepository.getSeedInventoryRepository();
     }
 }
