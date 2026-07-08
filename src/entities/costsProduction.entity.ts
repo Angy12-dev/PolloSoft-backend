@@ -17,7 +17,7 @@ export class CostsProductionEntity {
 
     @Column({
         type: 'date',
-        name: 'cost_date',
+        name: 'costDate',
         nullable: false,
     })
     costDate!: Date;
@@ -37,20 +37,29 @@ export class CostsProductionEntity {
     costType!: string;
 
     @Column({
-        type: 'varchar',
-        length: 40,
+        type: 'decimal',
+        precision: 10,
+        scale: 2,
         nullable: false,
     })
-    unit!: string;
+    amount!: number;
 
     @Column({
         type: 'decimal',
         nullable: false,
     })
-    worth!: number;
+    unitValue!: number;
+
+    @Column({
+        type: 'decimal',
+        precision: 10,
+        scale: 2,
+        nullable: false,
+        name: 'totalValue',
+    })
+    totalValue!: number;
 
     @ManyToOne(() => UsersEntity, (users) => users.costProduction)
-    @JoinColumn()
     users!: UsersEntity;
 
     @ManyToOne(() => BatchEntity, (batch) => batch.costProduction)
