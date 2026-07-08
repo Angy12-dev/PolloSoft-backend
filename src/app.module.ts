@@ -13,6 +13,7 @@ import { profitabilityModule } from './profitability/profitability.module';
 import { costProductionModule } from './costsProduction/costsProduction.module';
 import { seedModule } from './seed/seed.module';
 import { AuthModule } from './auth/auth.module';
+import { inventoryMovementModule } from './inventoryMovement/inventoryMovement.module';
 
 @Module({
     imports: [
@@ -34,6 +35,7 @@ import { AuthModule } from './auth/auth.module';
         costProductionModule,
         seedModule,
         AuthModule,
+        inventoryMovementModule,
     ],
     controllers: [AppController],
     providers: [AppService],
