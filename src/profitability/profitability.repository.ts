@@ -16,4 +16,31 @@ export class profitabilityRepository {
         const profitability = await this.profitabilityDataBase.find({});
         return profitability;
     }
+
+    async getProfitabilityByIdRepository(id: string) {
+        return this.profitabilityDataBase.findOne({
+            where: { id },
+            relations: ['users', 'batch'],
+        });
+    }
+
+    async getProfitabilityByBatchIdRepository(batchId: string) {
+        return this.profitabilityDataBase.findOne({
+            where: { batch: { id: batchId } },
+        });
+    }
+
+    async createProfitabilityRepository(data: Partial<ProfitabilityEntity>) {
+        const profitability = this.profitabilityDataBase.create(data);
+        return await this.profitabilityDataBase.save(profitability);
+    }
+
+    async updateProfitabilityByBatchRepository(
+        existing: ProfitabilityEntity,
+        data: Partial<ProfitabilityEntity>,
+    ) {
+        Object.assign(existing, data);
+        await this.profitabilityDataBase.save(existing);
+        return { message: 'Rentabilidad actualizada' };
+    }
 }

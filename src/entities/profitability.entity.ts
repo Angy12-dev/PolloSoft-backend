@@ -18,47 +18,60 @@ export class ProfitabilityEntity {
 
     @Column({
         type: 'date',
-        name: 'start_date',
+        name: 'startDate',
         nullable: false,
     })
     startDate!: Date;
 
     @Column({
         type: 'date',
-        name: 'end_date',
-        nullable: false,
+        name: 'endDate',
+        nullable: true,
     })
-    endDate!: Date;
+    endDate!: Date | null;
 
     @Column({
         type: 'decimal',
+        precision: 12,
+        scale: 2,
+        name: 'totalIncome',
         nullable: false,
     })
     totalIncome!: number;
 
     @Column({
         type: 'decimal',
+        precision: 12,
+        scale: 2,
+        name: 'totalCost',
         nullable: false,
     })
     totalCost!: number;
 
     @Column({
         type: 'decimal',
+        precision: 12,
+        scale: 2,
+        name: 'netProfit',
         nullable: false,
     })
     netProfit!: number;
 
     @Column({
         type: 'decimal',
+        precision: 5,
+        scale: 2,
+        name: 'profitPercentage',
         nullable: false,
     })
     profitPercentage!: number;
 
-    @ManyToOne(() => UsersEntity, (users) => users.profitabilite)
-    @JoinColumn()
+    @ManyToOne(() => UsersEntity, (users) => users.profitability)
     users!: UsersEntity;
 
-    @OneToOne(() => BatchEntity, (batch) => batch.profitabilite)
-    @JoinColumn()
+    @OneToOne(() => BatchEntity, (batch) => batch.profitability, {
+        onDelete: 'CASCADE',
+    })
+    @JoinColumn({ name: 'batch_id' })
     batch!: BatchEntity;
 }
