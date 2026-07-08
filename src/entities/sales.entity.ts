@@ -13,14 +13,14 @@ export class SalesEntity {
     // aqui iran las columnas de la tabla ventas
 
     @PrimaryGeneratedColumn('uuid')
-    uuid!: string;
+    id!: string;
 
     @Column({
         type: 'date',
         name: 'sale_date',
         nullable: false,
     })
-    saledate!: Date;
+    saleDate!: Date;
 
     @Column({
         type: 'int',
