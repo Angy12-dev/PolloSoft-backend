@@ -70,11 +70,11 @@ export class seedRepository {
 
         await this.salesDataBase.save([
             {
-                saledate: new Date('2026-02-10'),
+                saleDate: new Date(),
                 amount: 3,
                 weightKg: 7.5,
-                unitValue: 13.0,
-                totalValue: 97.5,
+                unitValue: 13000,
+                totalValue: 97500,
                 users: user,
                 batch: batch,
             },
@@ -159,8 +159,9 @@ export class seedRepository {
                 description:
                     'Concentrado de engorde marca Italcol linea dorada',
                 costType: 'Alimentacion',
-                unit: '8 Bultos',
-                worth: 1000000,
+                amount: 8,
+                unitValue: 100000,
+                totalValue: 800000,
                 users: user,
                 batch: batch,
             },
