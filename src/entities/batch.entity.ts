@@ -1,7 +1,6 @@
 import {
     Column,
     Entity,
-    JoinColumn,
     ManyToOne,
     OneToMany,
     OneToOne,
@@ -9,9 +8,9 @@ import {
 } from 'typeorm';
 import { UsersEntity } from './users.entity';
 import { SalesEntity } from './sales.entity';
-import { InventoryEntity } from './inventory.entity';
 import { ProfitabilityEntity } from './profitability.entity';
 import { CostsProductionEntity } from './costsProduction.entity';
+import { InventoryMovementEntity } from './inventoryMovement.entity';
 
 @Entity({ name: 'batch' })
 export class BatchEntity {
@@ -50,7 +49,7 @@ export class BatchEntity {
     @Column({
         type: 'date',
         name: 'departure_date',
-        nullable: false,
+        nullable: true,
     })
     departureDate!: Date;
 
@@ -62,21 +61,20 @@ export class BatchEntity {
     description!: string;
 
     @ManyToOne(() => UsersEntity, (users) => users.batch)
-    @JoinColumn()
     users!: UsersEntity;
 
     @OneToMany(() => SalesEntity, (sales) => sales.batch)
-    sales!: SalesEntity;
+    sales!: SalesEntity[];
 
-    @OneToMany(() => InventoryEntity, (inventory) => inventory.batch)
-    inventory!: InventoryEntity;
-
-    @OneToOne(() => ProfitabilityEntity, (profitabilite) => profitabilite.batch)
-    profitabilite!: ProfitabilityEntity;
+    @OneToOne(() => ProfitabilityEntity, (profitability) => profitability.batch)
+    profitability!: ProfitabilityEntity;
 
     @OneToMany(
         () => CostsProductionEntity,
         (costProduction) => costProduction.batch,
     )
-    costProduction!: CostsProductionEntity;
+    costProduction!: CostsProductionEntity[];
+
+    @OneToMany(() => InventoryMovementEntity, (movement) => movement.batch)
+    inventoryMovement!: InventoryMovementEntity[];
 }
