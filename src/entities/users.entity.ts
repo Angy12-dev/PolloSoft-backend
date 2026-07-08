@@ -5,6 +5,7 @@ import { InventoryEntity } from './inventory.entity';
 import { BatchEntity } from './batch.entity';
 import { ProfitabilityEntity } from './profitability.entity';
 import { CostsProductionEntity } from './costsProduction.entity';
+import { InventoryMovementEntity } from './inventoryMovement.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -58,13 +59,16 @@ export class UsersEntity {
 
     @OneToMany(
         () => ProfitabilityEntity,
-        (profitabilite) => profitabilite.users,
+        (profitability) => profitability.users,
     )
-    profitabilite!: ProfitabilityEntity;
+    profitability!: ProfitabilityEntity;
 
     @OneToMany(
         () => CostsProductionEntity,
         (costProduction) => costProduction.users,
     )
     costProduction!: CostsProductionEntity;
+
+    @OneToMany(() => InventoryMovementEntity, (movement) => movement.users)
+    inventoryMovement!: InventoryMovementEntity[];
 }

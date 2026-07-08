@@ -6,7 +6,6 @@ import {
 import { usersRepository } from './users.repository';
 import { createUserDto } from './Dtos/createUser.dto';
 import { updateUserDto } from './Dtos/updateUser.dto';
-import { not } from 'rxjs/internal/util/not';
 
 @Injectable()
 export class userService {
