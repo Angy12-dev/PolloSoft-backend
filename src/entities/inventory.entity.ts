@@ -2,12 +2,12 @@ import { StateEnum } from 'src/enum/state.enum';
 import {
     Column,
     Entity,
-    JoinColumn,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UsersEntity } from './users.entity';
-import { BatchEntity } from './batch.entity';
+import { InventoryMovementEntity } from './inventoryMovement.entity';
 
 @Entity({ name: 'inventory' })
 export class InventoryEntity {
@@ -32,6 +32,8 @@ export class InventoryEntity {
 
     @Column({
         type: 'decimal',
+        precision: 10,
+        scale: 2,
         nullable: false,
     })
     amount!: number;
@@ -51,10 +53,8 @@ export class InventoryEntity {
     state!: StateEnum;
 
     @ManyToOne(() => UsersEntity, (users) => users.inventory)
-    @JoinColumn()
     users!: UsersEntity;
 
-    @ManyToOne(() => BatchEntity, (batch) => batch.inventory)
-    @JoinColumn()
-    batch!: BatchEntity;
+    @OneToMany(() => InventoryMovementEntity, (movement) => movement.inventory)
+    inventoryMovement!: InventoryMovementEntity[];
 }
